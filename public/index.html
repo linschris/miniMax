@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <title>MiniMax</title>
+    <link rel="stylesheet" href="./assets/styles/landingPage.css">
+    <link rel="stylesheet" href="./assets/styles/gamePage.css">
+    <link rel="stylesheet" href="./assets/styles/gameTree.css">
+    <link rel="stylesheet" href="./assets/styles/structure.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="./assets/scripts/gameTree.js"></script>
+    <script src="./assets/scripts/sketch.js"></script>
+    <script src="./assets/scripts/miniMax.js"></script>
+    <script src="./assets/scripts/squareNode.js"></script>
+    <script src="./assets/scripts/ticTacToeSVG.js"></script>
+    <script src="./assets/scripts/ticTacToeClass.js"></script>
+    <script src="./assets/scripts/ticTacToe.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  </head>
+  <body>
+    <div id="svgGrid">
+      <div id="tttVector">
+        <svg width="638" height="776" viewBox="0 0 638 776" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="23" y="148.184" width="32" height="657.939" transform="rotate(-28.3272 23 148.184)" fill="#FBEB97"/>
+          <rect x="171" y="36.1841" width="32" height="669.933" transform="rotate(-28.3272 171 36.1841)" fill="#FBEB97"/>
+          <rect x="428.928" y="134" width="32" height="516.106" transform="rotate(56.2104 428.928 134)" fill="#FBEB97"/>
+          <rect x="331.41" width="32" height="770.754" transform="rotate(8.68683 331.41 0)" fill="#FBB597"/>
+          <rect x="529.928" y="340" width="32" height="516.106" transform="rotate(56.2104 529.928 340)" fill="#FBEB97"/>
+          <rect x="210.137" y="347" width="176" height="22" transform="rotate(24.5392 210.137 347)" fill="#FF0000"/>
+          <rect width="176" height="22" transform="matrix(-0.010666 0.999943 0.999943 0.010666 275.56 305.442)" fill="#FC0000"/>
+          <rect x="147.137" y="640.558" width="176" height="22" transform="rotate(24.5392 147.137 640.558)" fill="#FF0000"/>
+          <rect width="176" height="22" transform="matrix(-0.010666 0.999943 0.999943 0.010666 212.56 599)" fill="#FC0000"/>
+          <rect x="248.137" y="41.5581" width="176" height="22" transform="rotate(24.5392 248.137 41.5581)" fill="#FF0000"/>
+          <rect width="176" height="22" transform="matrix(-0.010666 0.999943 0.999943 0.010666 313.56 0)" fill="#FC0000"/>
+          <ellipse cx="559.5" cy="496.5" rx="78.5" ry="76.5" fill="#111AF3"/>
+          <ellipse cx="560" cy="497" rx="52" ry="51" fill="white"/>
+          <ellipse cx="441.5" cy="290.5" rx="78.5" ry="76.5" fill="#111AF3"/>
+          <ellipse cx="442" cy="291" rx="52" ry="51" fill="white"/>
+          </svg>  
+      </div>
+      <div id="landingVector">
+        <svg width="965" height="900" viewBox="0 0 965 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M966.5 902V-1H0.5C221.055 148.015 242 231 242 489C242 747 228.573 771.202 62 902H966.5Z" fill="url(#paint0_linear)"/>
+          <defs>
+          <linearGradient id="paint0_linear" x1="483.5" y1="-1" x2="484" y2="792.5" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#C7D6E4"/>
+          <stop offset="1" stop-color="#C7E4E3" stop-opacity="0"/>
+          </linearGradient>
+          </defs>
+        </svg>
+        <div id="lp-text-container">
+          <div class="header2" id="lp-title">TicTacToe <br>Made<br> <span>Impossible.</span></div>
+          <div class="header6" id="lp-subtitle">Powered by the MiniMax algorithm.</div>  
+          <button class="button" id="lp-button" onclick="switchToGamePage()">Play Against the AI</button>
+        </div>   
+      </div>
+    </div>
+    <div id="game-container" style="display: none;">
+      <div id="player1-side">
+        <div id="player1-card" class="playerCard teamX">
+          <div class="playerCard-score" id="player1-score"><span>0</span></div>
+          <p class="playerCard-num">Player 1</p>
+          <p class="playerCard-name">HUMAN</p>
+          <p class="playerCard-mark" id="player1-mark">X</p>
+        </div>
+        <button class="button shadow teamX" id="cm-btn" onclick="changeMark()"><i class="fas fa-user-friends buttonIcon"></i>Change Mark</button>
+      </div>
+      <div id="game-board">
+        <div class="header1" id="game-turn"><span style="color: red;">X</span>'s Turn</div>
+        <div id="ttt-mini-canvas">
+        </div>
+        <button class="button shadow" id="rb-btn" onclick="resetBoard()"><i class="fas fa-broom buttonIcon"></i>Reset Board</button>
+        <button class="button shadow" id="gt-btn" onclick="showGameTree()"><i class="fab fa-pagelines buttonIcon"></i>View Game Tree</button>
+      </div>
+      <div id="player2-side">
+        <div id="player2-card" class="playerCard teamO">
+          <div class="playerCard-score" id="player2-score"><span>0</span></div>
+          <p class="playerCard-num">Player 2</p>
+          <p class="playerCard-name" id="player2-name">COMP</p>
+          <p class="playerCard-mark" id="player2-mark">O</p>
+        </div>
+        <div id="depth-container">
+          <i class="fas fa-robot buttonIcon" id="robot-icon"></i>
+          <select name="depth" class="button shadow teamO" id="cl-btn">
+            <option value="1" selected="selected">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+            <option value="4">Level 4</option>
+            <option value="5">Level 5</option>
+            <option value="6">Level 6</option>
+            <option value="7">Level 7</option>
+            <option value="8">Level 8</option>
+            <option value="9">Level 9</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="gameTree-container" style="display: none;">
+      <div class="header1" style="text-align: center; color: var(--gray)">Game Tree</div>
+      <div class="header6" style="text-align: center; color: var(--light-gray);">Click on squares to see the possibilities.</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+#gameTree-container {
+    width: 100vw;
+    height: 400rem;
+    position: relative;
+    margin-top: var(--space-md);
+}

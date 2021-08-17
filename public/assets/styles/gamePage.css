@@ -1,0 +1,199 @@
+#game-container {
+    width: 100%;
+    height: 105vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    background: linear-gradient(179.96deg, #C7D6E4 0.03%, rgba(255, 255, 255, 0.78) 87.85%);
+}
+
+#gb-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#game-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#game-turn {
+    margin: var(--space-md);
+    color: var(--gray);
+}
+
+#ttt-mini-canvas {
+    position: relative;
+    left: 1.5rem;
+    width: 27rem;
+    height: 27rem;
+}
+
+#best-move-message {
+    margin-top: 2rem;
+    margin-bottom: var(--space-lg);
+    font-size: 2rem;
+    font-weight: thin;
+    text-align: center;
+}
+
+#player1-side, #player2-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#player2-name:hover {
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#depth-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    height: calc(4rem + var(--space-md));
+}
+
+#robot-icon {
+    align-self: center;
+    top: calc(var(--space-md) / 2);
+    left: 12.5%;
+    z-index: 2;
+    font-size: 1.5rem;
+    color: white;
+}
+
+#cm-btn, #cl-btn, #rb-btn, #gt-btn {
+    position: relative;
+    width: 60%;
+    margin-top: var(--space-md);
+    height: 4rem;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#cl-btn {
+    padding-left: 20%;
+}
+
+.buttonIcon {
+    position: relative;
+    left: -5%;
+}
+
+#rb-btn {
+    width: 25%;
+    background-color: var(--purple-blue);
+}
+
+#rb-btn:hover {
+    background-color: var(--ocean-blue);
+}
+
+#gt-btn {
+    width: 35%;
+    background-color: var(--light-green);
+}
+
+#gt-btn:hover {
+    background-color: var(--lighter-green);
+}
+
+.playerCard {
+    width: 8rem;
+    height: 12rem;
+    border-radius: 2rem;
+    position: relative;
+    /* left: calc(50% - 4rem); */
+    margin-top: 40%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.playerCard-score {
+    position: absolute;
+    width: 50%;
+    height: 33%;
+    left: 25%;
+    top: -15%;
+    border-radius: 50%;
+    font-size: 3rem;
+    background-color: var(--pink);
+}
+
+.playerCard-score > span {
+    position: relative;
+    top: 0.25rem;
+}
+
+.playerCard > p {
+    position: relative;
+    top: 15%;
+}
+
+.playerCard-mark {
+    font-size: 3rem;
+    margin: var(--space-xs);
+}
+
+.playerCard-num {
+    margin: var(--space-sm);
+}
+
+.playerCard-name {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.teamO {
+    background: linear-gradient(180deg, #111AF3 0%, rgba(17, 26, 243, 0.3) 100%);
+}
+
+.teamO .playerCard-score {
+    background-color: var(--purple-blue);
+}
+
+.teamO.button {
+    /* background: linear-gradient(180deg, #FC0000 0%, rgba(252, 0, 0, 0.3) 100%); */
+    background-color: var(--dark-blue);
+}
+
+.teamO.button:hover {
+    /* background: linear-gradient(180deg, #FC0000 0%, rgba(252, 0, 0, 0.3) 100%); */
+    background-color: var(--purple-blue);
+}
+
+.teamX .playerCard-score {
+    background-color: var(--pink);
+}
+
+.teamX.button {
+    /* background: linear-gradient(180deg, #FC0000 0%, rgba(252, 0, 0, 0.3) 100%); */
+    background-color: var(--dark-red);
+}
+
+.teamX.button:hover {
+    /* background: linear-gradient(180deg, #FC0000 0%, rgba(252, 0, 0, 0.3) 100%); */
+    background-color: var(--pink);
+}
+
+.teamX {
+    background: linear-gradient(180deg, #FC0000 0%, rgba(252, 0, 0, 0.3) 100%);
+}
+
+.colorX {
+    color: var(--dark-red);
+}
+
+.colorO {
+    color: var(--dark-blue);
+}

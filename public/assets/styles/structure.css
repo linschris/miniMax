@@ -1,0 +1,66 @@
+
+:root {
+    /* Spacing */
+    --baseline: 2rem;
+    --space-xs: calc((var(--baseline) / 3));
+    --space-sm: calc((var(--baseline) / 2));
+    --space-md: calc(var(--baseline));
+    --space-lg: calc((var(--baseline) * 2));
+    --space-xl: calc((var(--baseline) * 3));
+
+    /* Colors */
+    --dark-blue: #111AF3;
+    --purple-blue: #575DF3;
+    --ocean-blue: #5489EE;
+    --light-blue: #67B1F6;
+    --lighter-blue: #C7D6E4;
+    --light-green: #049372;
+    --lighter-green: rgb(4, 171, 132);
+    --dark-red: #FC0000;
+    --light-red: #FBB597;
+    --pink: #FC9595;
+    --gray: rgba(42, 45, 49, 0.8);
+    --light-gray: rgba(42, 45, 49, 0.4);
+}
+
+/* Headers  */
+
+.header1 {
+    font-weight: 900;
+    font-size: 4.5rem;
+}
+.header2 {
+    font-weight: bolder;
+    font-size: 3.5rem;
+}
+.header3 {
+    font-weight: bolder;
+    font-size: 3rem;
+}
+.header4 {
+    font-weight: bold;
+    font-size: 2.5rem;
+}
+.header5 {
+    font-weight: bold;
+    font-size: 2.25rem;
+}
+.header6 {
+    font-weight: normal;
+    font-size: 2rem;
+}
+
+.button {
+    width: 20rem;
+    height: 4rem;
+    border: 0;
+    border-radius: 1rem;
+    font-family: inherit;
+    text-align: center;
+    cursor: pointer;
+}
+
+.shadow {
+    -webkit-box-shadow: 3px 4px 7px 0px #8E8E8E; 
+    box-shadow: 0px 4px 4px 0px #b8b7b7;
+}
