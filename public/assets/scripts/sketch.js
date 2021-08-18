@@ -63,6 +63,8 @@ var ticTacToeCanvas = function(sketch) {
     }
 }
 
+new p5(ticTacToeCanvas);
+
 
 
 

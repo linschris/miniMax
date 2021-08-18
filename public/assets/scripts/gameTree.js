@@ -37,6 +37,7 @@ var nodeMargin = nodeSize / 3.4;
 var dictionary = {};
 var depth, root, newNode;
 var i = 0, duration = 1500;
+let hovering = []
 
 function drawGameTree(board, currentTurn, depthAmount) {
     newNode = new TicTacToeGame(mark_of("human"), mark_of("computer"), clone_board(board));
@@ -104,7 +105,8 @@ function update(source) {
                         .append("g")
                         .attr("class", "node-group")
                         .on("click", click)
-    
+                        .on("mouseover", function(d) { d.hovering = true; })
+
     var nodeExit = node.exit()
                         .transition()
                         .duration(duration)
@@ -115,16 +117,18 @@ function update(source) {
     var nodeUpdate = node.transition()
                         .duration(duration)
                         .attr("transform", function(d) { return "translate(" + (d.x - nodeMargin - 15) + ", " + (d.y - nodeMargin) + ")"; })
+                        
 
-    
     var svgView = new TicTacToeSVG({
         model: newNode,
-        sideLength: nodeSize
+        sideLength: nodeSize,
+        scale: 1
     });
-      
+                    
     // Draw nodes
     svg.selectAll(".node-group")
         .each(function(node) {
+            console.log(node)
             svgView.model = node.board
             svgView.score = dictionary[JSON.stringify(node.board)] != undefined ? dictionary[JSON.stringify(node.board)] : "N/A"
             svgView.svg = d3.select(this);

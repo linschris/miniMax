@@ -2,10 +2,10 @@
         this.model = options.model;
         this.score = options.score;
         this.hasChildren = options.hasChildren;
-        this.sideLength = options.sideLength;
+        this.sideLength = options.sideLength * options.scale;
         this.svg = options.svg || document.createElement("svg");
         this.svg = d3.select(this.svg).append("g");
-        this.svg.attr("transform", "scale(2.0)");        
+        this.svg.attr("transform", "scale(10.0)");        
         this.colors = {
             bg: "#ffd480",
             border: "#f7b534",
@@ -35,7 +35,7 @@
             .attr("y", this.sideLength + 30)
             .attr("dy", ".35em")
             .style("font-weight", "900")
-            .style("font-size", "2rem")
+            .style("font-size", `2rem`)
             .style('fill', this.score == 1 ? "green" : this.score == -1 ? "red" : "#ff9966")
             .text(this.score)
         }
@@ -45,7 +45,7 @@
             .attr("y", this.sideLength / 2)
             .attr("dy", ".35em")
             .style("font-weight", "900")
-            .style("font-size", "2rem")
+            .style("font-size", `2rem`)
             .style('fill', this.score == 1 ? "green" : this.score == -1 ? "red" : "#ff9966")
             .text(this.score)
         }

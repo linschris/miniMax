@@ -137,11 +137,7 @@ function changeMark() {
     
 }
 function switchToGamePage() {
-    let svgGrid = document.getElementById("svgGrid");
-    let gameContainer = document.getElementById("game-container");
-    svgGrid.style.display = "none";
-    gameContainer.style.display = "grid";
-    new p5(ticTacToeCanvas);
+    location.href = "/game";
 }
 function addChange() {
     let player2Name = document.getElementById("player2-name")

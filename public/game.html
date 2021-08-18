@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>MiniMax - Game Page</title>
+        <link rel="stylesheet" href="./assets/styles/landingPage.css">
+        <link rel="stylesheet" href="./assets/styles/gamePage.css">
+        <link rel="stylesheet" href="./assets/styles/gameTree.css">
+        <link rel="stylesheet" href="./assets/styles/structure.css">
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <script defer src="./assets/scripts/gameTree.js"></script>
+        <script src="./assets/scripts/sketch.js"></script>
+        <script src="./assets/scripts/miniMax.js"></script>
+        <script src="./assets/scripts/squareNode.js"></script>
+        <script src="./assets/scripts/ticTacToeSVG.js"></script>
+        <script src="./assets/scripts/ticTacToeClass.js"></script>
+        <script src="./assets/scripts/ticTacToe.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      </head>
+      <body>
+        <div id="game-container">
+            <div id="player1-side">
+              <div id="player1-card" class="playerCard teamX">
+                <div class="playerCard-score" id="player1-score"><span>0</span></div>
+                <p class="playerCard-num">Player 1</p>
+                <p class="playerCard-name">HUMAN</p>
+                <p class="playerCard-mark" id="player1-mark">X</p>
+              </div>
+              <button class="button shadow teamX" id="cm-btn" onclick="changeMark()"><i class="fas fa-user-friends buttonIcon"></i>Change Mark</button>
+            </div>
+            <div id="game-board">
+              <div class="header1" id="game-turn"><span style="color: red;">X</span>'s Turn</div>
+              <div id="ttt-mini-canvas">
+              </div>
+              <button class="button shadow" id="rb-btn" onclick="resetBoard()"><i class="fas fa-broom buttonIcon"></i>Reset Board</button>
+              <button class="button shadow" id="gt-btn" onclick="showGameTree()"><i class="fab fa-pagelines buttonIcon"></i>View Game Tree</button>
+            </div>
+            <div id="player2-side">
+              <div id="player2-card" class="playerCard teamO">
+                <div class="playerCard-score" id="player2-score"><span>0</span></div>
+                <p class="playerCard-num">Player 2</p>
+                <p class="playerCard-name" id="player2-name">COMP</p>
+                <p class="playerCard-mark" id="player2-mark">O</p>
+              </div>
+              <div id="depth-container">
+                <i class="fas fa-robot buttonIcon" id="robot-icon"></i>
+                <select name="depth" class="button shadow teamO" id="cl-btn">
+                  <option value="1" selected="selected">Level 1</option>
+                  <option value="2">Level 2</option>
+                  <option value="3">Level 3</option>
+                  <option value="4">Level 4</option>
+                  <option value="5">Level 5</option>
+                  <option value="6">Level 6</option>
+                  <option value="7">Level 7</option>
+                  <option value="8">Level 8</option>
+                  <option value="9">Level 9</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div id="gameTree-container" style="display: none;">
+            <div class="header1" style="text-align: center; color: var(--gray)">Game Tree</div>
+            <div class="header6" style="text-align: center; color: var(--light-gray);">Click on a board to see the possibilities.</div>
+          </div>
+      </body>
+</html>
